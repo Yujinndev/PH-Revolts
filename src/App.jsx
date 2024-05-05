@@ -1,35 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "leaflet/dist/leaflet.css";
+import { Icon, divIcon, point } from "leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import MarkerClusterGroup from "react-leaflet-cluster";
 
-function App() {
-  const [count, setCount] = useState(0)
+// create custom icon
+const customIcon = new Icon({
+  // iconUrl: "https://cdn-icons-png.flaticon.com/512/447/447031.png",
+  iconUrl: "https://cdn-icons-png.flaticon.com/128/9131/9131546.png",
+  iconSize: [38, 38], // size of the icon
+});
 
+// custom cluster icon
+const createClusterCustomIcon = function (cluster) {
+  return new divIcon({
+    html: `<span class="cluster-icon">${cluster.getChildCount()}</span>`,
+    className: "custom-marker-cluster",
+    iconSize: point(33, 33, true),
+  });
+};
+
+// markers
+const markers = [
+  {
+    geocode: [14.599512, 120.984222],
+    popUp: "Hello, I am pop up 1",
+  },
+  {
+    geocode: [15.599512, 120.584222],
+    popUp: "Hello, I am pop up 2",
+  },
+  {
+    geocode: [17.899512, 120.504222],
+    popUp: "[Ilocos] In 1762, An uprising was founded by Diego Silang",
+  },
+];
+
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <MapContainer center={[13.599512, 120.984222]} zoom={6.5}>
+      <TileLayer
+        attribution="Google Maps"
+        // url="http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}" // regular
+        url="http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}" // satellite
+        // url="http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}" // terrain
+        maxZoom={20}
+        subdomains={["mt0", "mt1", "mt2", "mt3"]}
+      />
 
-export default App
+      <MarkerClusterGroup
+        chunkedLoading
+        iconCreateFunction={createClusterCustomIcon}
+      >
+        {markers.map((marker, idx) => (
+          <Marker key={idx} position={marker.geocode} icon={customIcon}>
+            <Popup>{marker.popUp}</Popup>
+          </Marker>
+        ))}
+      </MarkerClusterGroup>
+    </MapContainer>
+  );
+}
