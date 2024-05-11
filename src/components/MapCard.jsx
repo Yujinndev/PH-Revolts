@@ -3,10 +3,16 @@ import 'leaflet/dist/leaflet.css'
 import { Icon, divIcon, point } from 'leaflet'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import MarkerClusterGroup from 'react-leaflet-cluster'
+import { useNavigate } from 'react-router-dom'
 
 // create custom icon
-const customIcon = new Icon({
+const redIcon = new Icon({
   iconUrl: 'https://cdn-icons-png.flaticon.com/128/9131/9131546.png',
+  iconSize: [38, 38],
+})
+
+const blackIcon = new Icon({
+  iconUrl: 'https://cdn-icons-png.flaticon.com/512/447/447031.png',
   iconSize: [38, 38],
 })
 
@@ -19,39 +25,11 @@ const createClusterCustomIcon = function (cluster) {
   })
 }
 
-const REVOLTS = [
-  {
-    place: 'Ilocos',
-    leader: 'Diego Silang',
-    title: '',
-    content: '',
-    geocode: [17.899512, 120.504222],
-  },
-]
+const MapCard = ({ items }) => {
+  const navigate = useNavigate()
 
-// markers
-const markers = [
-  {
-    geocode: [14.599512, 120.984222],
-    popUp: 'Hello, I am pop up 1',
-  },
-  {
-    geocode: [15.599512, 120.584222],
-    popUp: 'Hello, I am pop up 2',
-  },
-  {
-    geocode: [17.899512, 120.504222],
-    popUp: '[Ilocos] In 1762, An uprising was founded by Diego Silang',
-    icon: new Icon({
-      iconUrl: 'https://cdn-icons-png.flaticon.com/512/447/447031.png',
-      iconSize: [38, 38],
-    }),
-  },
-]
-
-const MapCard = () => {
   return (
-    <MapContainer center={[11.599512, 122.584222]} zoom={5.75}>
+    <MapContainer center={[11.599512, 122.084222]} zoom={5.75}>
       <TileLayer
         attribution="Google Maps"
         // url="http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}" // regular
@@ -63,21 +41,28 @@ const MapCard = () => {
         subdomains={['mt0', 'mt1', 'mt2', 'mt3']}
       />
 
-      <MarkerClusterGroup
+      {/* <MarkerClusterGroup
         chunkedLoading
         iconCreateFunction={createClusterCustomIcon}
-      >
-        {markers.map((marker, idx) => (
-          <Marker
-            key={idx}
-            position={marker.geocode}
-            icon={marker.icon ? marker.icon : customIcon}
-            autoPanOnFocus={true}
-          >
-            <Popup>{marker.popUp}</Popup>
-          </Marker>
-        ))}
-      </MarkerClusterGroup>
+      > */}
+      {items.map((item, idx) => (
+        <Marker
+          key={idx}
+          position={item.geocodes}
+          icon={item.icon ? blackIcon : redIcon}
+          autoPanOnFocus={true}
+          eventHandlers={{
+            click: () => {
+              navigate(`/${item.href ? item.href : ''}`)
+            },
+          }}
+        >
+          <Popup>
+            <b>{item.place}</b> - {item.title}
+          </Popup>
+        </Marker>
+      ))}
+      {/* </MarkerClusterGroup> */}
     </MapContainer>
   )
 }
