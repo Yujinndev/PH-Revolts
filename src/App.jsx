@@ -1,14 +1,26 @@
-import MapCard from '@/components/MapCard'
+import React from 'react'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+} from 'react-router-dom'
 
-export default function App() {
+import ScrollToAnchor from '@/utils/ScrollToAnchor'
+import Blog from '@/pages/Blog'
+
+function App() {
   return (
-    <div className="relative grid w-screen max-w-7xl grid-cols-12 gap-8 overflow-x-hidden p-4">
-      <div className="col-span-12 rounded-lg border bg-white p-8 lg:col-span-8">
-        hello
-      </div>
-      <div className="col-span-12 lg:col-span-4">
-        <MapCard />
-      </div>
-    </div>
+    <Router>
+      <>
+        <ScrollToAnchor />
+
+        <Routes>
+          <Route path="/" element={<Blog />} />
+        </Routes>
+      </>
+    </Router>
   )
 }
+
+export default App
