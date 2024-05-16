@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "framer-motion": "^11.2.3",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.378.0",
+    "mini-svg-data-uri": "^1.4.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-leaflet": "^4.2.1",
