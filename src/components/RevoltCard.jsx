@@ -17,7 +17,7 @@ const RevoltCard = ({ revolt, className }) => {
   return (
     <section
       id={revolt?.href?.slice(1)}
-      className="group relative flex w-full flex-col items-start justify-center gap-2 overflow-hidden rounded-lg border bg-white shadow-sm"
+      className="group relative flex w-full flex-col items-start justify-center gap-2 overflow-hidden rounded-lg border bg-white shadow-md"
     >
       <div className={cn('relative flex w-full flex-col lg:flex-row')}>
         {images?.map((element, index) => (
@@ -32,9 +32,19 @@ const RevoltCard = ({ revolt, className }) => {
           {revolt.place}
         </span>
       </div>
-      <div className="flex-1 px-8 py-4">
-        <h1 className="text-left text-lg font-bold">{revolt.title}</h1>
-        <p className="py-2 text-justify text-gray-600">{revolt.cause}</p>
+      <div className="relative flex-1 px-8 py-4">
+        <div className="relative py-4">
+          <h1 className="text-left text-lg font-bold">{revolt.title}</h1>
+          <div className="absolute inset-y-12 h-1 w-20 rounded-xl bg-yellow-700" />
+        </div>
+
+        {revolt.leader != '' && (
+          <p className="text-left font-serif italic text-black">
+            Leader/s: {revolt.leader}
+          </p>
+        )}
+
+        <p className="pt-2 text-justify text-gray-600">{revolt.cause}</p>
         <p className="py-2 text-justify text-gray-600">~ {revolt.result}</p>
       </div>
     </section>
