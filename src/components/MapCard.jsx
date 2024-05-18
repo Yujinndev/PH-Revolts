@@ -52,8 +52,10 @@ const MapCard = ({ items }) => {
           icon={item.icon ? blackIcon : redIcon}
           autoPanOnFocus={true}
           eventHandlers={{
-            click: () => {
-              navigate(`/${item.href ? item.href : ''}`)
+            click: async () => {
+              setTimeout(() => {
+                navigate(`/${item.href ? item.href : ''}`)
+              }, 500)
             },
           }}
         >

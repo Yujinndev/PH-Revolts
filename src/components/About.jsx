@@ -4,17 +4,19 @@ import React from 'react'
 const MEMBERS = [
   {
     name: 'Mark Eugene Laysa',
-    // image: '1qN1Wv2Lue3RSItenYRQhBWBKDwWB0Ht3',
+    image: '1qN1Wv2Lue3RSItenYRQhBWBKDwWB0Ht3',
   },
   {
     name: 'Jerick Gaerlan',
-  },
-  {
-    name: 'Vhince Cedrick Afroilan',
+    image: '14gCCs6b4D_SlEpY_Dx1Tud3w3WyP56_O',
   },
   {
     name: 'Mighty Angel Angelo',
-    // image: '1-4VmU5tRX1iJpqL0q-VhnWK2jrUfiCoP',
+    image: '1-4VmU5tRX1iJpqL0q-VhnWK2jrUfiCoP',
+  },
+  {
+    name: 'Vhince Cedrick Afroilan',
+    image: '1mOx6UPMc5RevHwBnNKX1eC7eX8KZ6ONF',
   },
 ]
 
@@ -41,8 +43,10 @@ const About = () => {
             </div>
 
             <div className="flex-1">
-              <p className="text-lg font-bold">{item.name}</p>
-              <p className="text-sm">BS in Computer Science - III</p>
+              <p className="text-lg font-bold lg:text-xl">{item.name}</p>
+              <p className="text-sm lg:text-base">
+                BS in Computer Science - III
+              </p>
             </div>
           </div>
         ))}

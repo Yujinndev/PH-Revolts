@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 function ScrollToAnchor() {
   const location = useLocation()
   const lastHash = useRef('')
-  const topPadding = useRef(50) // Set the desired top padding value
+  const topPadding = useRef(100) // Set the desired top padding value
 
   useEffect(() => {
     if (location.hash) {

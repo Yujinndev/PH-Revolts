@@ -106,6 +106,11 @@ const Blog = () => {
                 >
                   <X />
                 </button>
+                <div className="absolute inset-x-1 bottom-1 z-50 rounded-lg bg-slate-50 p-4 font-mono text-xs italic lg:bottom-28">
+                  You can click the pins on the map to see the revolts in that
+                  area
+                </div>
+
                 <MapCard items={REVOLTS} />
               </div>
             ) : null}
@@ -163,7 +168,7 @@ const Blog = () => {
             </div>
           </div>
 
-          {showMap === true ? (
+          {/* {showMap === true ? (
             <div
               className={cn(
                 'absolute bottom-0 col-span-12 row-span-2 lg:fixed lg:inset-y-0 lg:right-10 lg:top-12 lg:col-span-4 lg:block lg:h-screen lg:w-96 xl:right-20 2xl:right-44'
@@ -177,7 +182,7 @@ const Blog = () => {
               </button>
               <MapCard items={REVOLTS} />
             </div>
-          ) : null}
+          ) : null} */}
 
           <Link
             className="fixed bottom-8 right-8 z-50 flex items-center justify-center gap-2 rounded-full border bg-slate-50 px-4 py-2 lg:hidden"
