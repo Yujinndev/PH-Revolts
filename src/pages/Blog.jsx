@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowRight, X } from 'lucide-react'
+import { ArrowRight, ArrowUpLeft, X } from 'lucide-react'
 import { REVOLTS } from '@/data/revolts'
 import { cn } from '@/utils/cn'
 import MapCard from '@/components/MapCard'
@@ -12,6 +12,7 @@ import References from '@/components/References'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -20,6 +21,7 @@ const Blog = () => {
   const [activeSection, setActiveSection] = useState('intro')
   const [isMenuOpen, setMenuOpen] = useState(false)
   const sectionsRef = useRef([])
+
   const handleToggleMenu = () => {
     setMenuOpen(!isMenuOpen)
   }
@@ -82,12 +84,32 @@ const Blog = () => {
                 transition={{ duration: 0.5 }}
                 className="absolute inset-x-0 inset-y-10 z-10 ms-1 mt-4 w-full gap-4 py-4 md:hidden"
               >
-                <TableOfContents active={activeSection} />
+                <TableOfContents
+                  active={activeSection}
+                  onClick={() => handleToggleMenu()}
+                />
               </motion.div>
             )}
           </div>
 
           <div className="z-10 col-span-12 p-8 lg:col-span-6">
+            {showMap === true ? (
+              <div
+                className={cn(
+                  'relative z-50 col-span-12 row-span-2 mt-12 lg:fixed lg:inset-y-0 lg:right-10 lg:top-12 lg:col-span-4 lg:mt-0 lg:block lg:h-screen lg:w-96 xl:right-20 2xl:right-44'
+                )}
+                id="map"
+              >
+                <button
+                  onClick={() => setShowMap(false)}
+                  className="absolute right-2 top-2 z-50 rounded-lg bg-white lg:hidden"
+                >
+                  <X />
+                </button>
+                <MapCard items={REVOLTS} />
+              </div>
+            ) : null}
+
             <div
               className="relative"
               id="intro"
@@ -141,23 +163,30 @@ const Blog = () => {
             </div>
           </div>
 
-          <div
-            className={cn(
-              'relative order-1 col-span-12 row-span-2 lg:fixed lg:inset-y-0 lg:right-10 lg:top-12 lg:col-span-4 lg:block lg:h-screen lg:w-96 xl:right-20 2xl:right-44',
-              {
-                hidden: showMap == false,
-                block: showMap == true,
-              }
-            )}
-          >
-            <button
-              onClick={() => setShowMap(false)}
-              className="absolute right-2 top-2 z-50 rounded-lg bg-white lg:hidden"
+          {showMap === true ? (
+            <div
+              className={cn(
+                'absolute bottom-0 col-span-12 row-span-2 lg:fixed lg:inset-y-0 lg:right-10 lg:top-12 lg:col-span-4 lg:block lg:h-screen lg:w-96 xl:right-20 2xl:right-44'
+              )}
             >
-              <X />
-            </button>
-            <MapCard items={REVOLTS} />
-          </div>
+              <button
+                onClick={() => setShowMap(false)}
+                className="absolute right-2 top-2 z-50 rounded-lg bg-white lg:hidden"
+              >
+                <X />
+              </button>
+              <MapCard items={REVOLTS} />
+            </div>
+          ) : null}
+
+          <Link
+            className="fixed bottom-8 right-8 z-50 flex items-center justify-center gap-2 rounded-full border bg-slate-50 px-4 py-2 lg:hidden"
+            to="/#map"
+            onClick={() => setShowMap(true)}
+          >
+            <ArrowUpLeft />
+            <p className="font-mono text-xs">Map</p>
+          </Link>
         </div>
       </div>
     </main>

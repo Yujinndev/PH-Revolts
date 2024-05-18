@@ -67,12 +67,19 @@ const References = () => {
       <h1 className="text-center text-2xl font-bold lg:text-left">
         References
       </h1>
-      {LISTS.map((item) => (
-        <p className="mt-4 text-justify text-base/loose text-gray-600">
+      {LISTS.map((item, idx) => (
+        <p
+          key={idx}
+          className="relative mt-4 w-full text-justify text-base/loose text-gray-600"
+        >
           {item.author} <em>{item.references}</em>
           <br />
-          <a className="ms-6 text-blue-400" href={item.site} target="_blank">
-            <i>{item.site}</i>
+          <a
+            className="ms-6 line-clamp-2 font-serif italic text-blue-400 lg:line-clamp-none"
+            href={item.site}
+            target="_blank"
+          >
+            {item.site}
           </a>
         </p>
       ))}

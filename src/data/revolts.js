@@ -84,6 +84,7 @@ export const REVOLTS = [
   },
   {
     href: '#irrayas',
+    icon: 1,
     title: 'Irrayas (1621)',
     place: 'Cagayan Valley',
     leader: 'Felipe Cutabay and Gabriel Dayag',
@@ -126,6 +127,7 @@ export const REVOLTS = [
   },
   {
     href: '#maniago',
+    icon: 1,
     title: 'Maniago Revolt (1660 - 1661)',
     place: 'Bacoor, Cavite and Pampanga',
     leader: 'Francisco Maniago',
@@ -150,6 +152,7 @@ export const REVOLTS = [
   },
   {
     href: '#almazan',
+    icon: 1,
     title: 'Almazan Revolt (1661)',
     place: 'San Nicolas, Baccara, Laoag (Ilocos Norte)',
     leader: 'Juan Magsanop, Pedro Almazan and Gaspar Cristobal',
@@ -170,6 +173,7 @@ export const REVOLTS = [
   },
   {
     href: '#silang',
+    icon: 1,
     title: 'Silang Revolt (1762 - 1763)',
     place: 'Ilocos',
     leader: 'Diego Silang and Gabriela Silang',
@@ -185,6 +189,7 @@ export const REVOLTS = [
   },
   {
     href: '#palaris',
+    icon: 1,
     title: 'Palaris Revolt (1762 - 1765)',
     place: 'Pangasinan',
     leader: 'Juan Dela Cruz Palaris',
@@ -208,6 +213,7 @@ export const REVOLTS = [
   },
   {
     href: '#hermano',
+    icon: 1,
     title: 'Hermano Pule (1840 - 1841)',
     place: 'Quezon Province',
     leader: 'Apolinario Dela Cruz (Hermano Pule)',
@@ -234,6 +240,7 @@ export const REVOLTS = [
   },
   {
     href: '#bankaw',
+    icon: 1,
     title: 'Bankaw Revolt (1621 - 1622)',
     place: 'Leyte',
     leader: 'Bankaw Pagali',
@@ -245,6 +252,7 @@ export const REVOLTS = [
   },
   {
     href: '#sumuroy',
+    icon: 1,
     title: 'Sumuroy Revolt (1644)',
     place: 'Samar',
     leader: 'Francisco Sumuroy',
@@ -268,6 +276,7 @@ export const REVOLTS = [
   },
   {
     href: '#panay',
+    icon: 1,
     title: 'Panay Revolt (1663)',
     place: 'Otton, Panay',
     leader: 'Tapar',
@@ -293,6 +302,7 @@ export const REVOLTS = [
   },
   {
     href: '#moro',
+    icon: 1,
     title: 'Moro Wars (1578)',
     place: 'Jolo',
     leader: '',
@@ -307,6 +317,7 @@ export const REVOLTS = [
   },
   {
     href: '#caraga',
+    icon: 1,
     title: 'Caraga Revolt (1629 - 1631)',
     place: 'Caraga, Northern Mindanao',
     leader: 'Mangabon',

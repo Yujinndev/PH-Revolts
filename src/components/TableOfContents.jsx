@@ -31,9 +31,9 @@ export const CONTENTS = [
   },
 ]
 
-const TableOfContents = ({ active }) => {
+const TableOfContents = ({ active, onClick }) => {
   return (
-    <div className="relative flex w-full flex-col justify-start rounded-xl border-white bg-slate-100 p-4">
+    <div className="relative ms-[1px] flex w-[96%] flex-col justify-start rounded-xl border bg-slate-50 p-4">
       <h1 className="text-center text-lg font-medium lg:text-left">
         Table of Contents
       </h1>
@@ -43,6 +43,7 @@ const TableOfContents = ({ active }) => {
           <div key={idx}>
             <Link
               to={item.href}
+              onClick={onClick}
               className={cn('flex items-center gap-2 text-sm', {
                 'font-bold text-green-700': item?.href.slice(1) === active,
               })}
